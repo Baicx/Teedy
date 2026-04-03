@@ -1,0 +1,77 @@
+=====
+Hello World!
+=====
+
+Boot stack: 0x0000000080208000
+clean bss: 0x0000000080209000 - 0x000000008021f000
+Boot m_hartid 0
+[INFO  0,-1] bootcpu_entry: basic smp inited, thread_id available now, we are cpu 0: 0x000000008021e0c8
+Jump to percpu kernel stack
+Relocated. Boot halt sp at 0x000000008020afa0
+Boot another cpus.
+- booting hart 1: hsm_hart_start(hartid=1, pc=_entry_sec, opaque=1) = 0. waiting for hart online
+cpu 1 (halt 1) booting. Relocating
+cpu 1 (halt 1) booted. sp: 0x000000008020efe0
+- booting hart 2: hsm_hart_start(hartid=2, pc=_entry_sec, opaque=2) = 0. waiting for hart online
+cpu 2 (halt 2) booting. Relocating
+cpu 2 (halt 2) booted. sp: 0x0000000080212fe0
+- booting hart 3: hsm_hart_start(hartid=3, pc=_entry_sec, opaque=3) = 0. waiting for hart online
+cpu 3 (halt 3) booting. Relocating
+cpu 3 (halt 3) booted. sp: 0x0000000080216fe0
+System has 4 cpus online
+
+UART inited.
+[INFO  0,-1] kpgmgrinit: page allocator init: base: 0x000000008021f000, stop: 0x0000000084000000
+[INFO  0,-1] allocator_init: allocator proc inited [NOMMU]. start: 0x000000008021f000
+[INFO  0,-1] allocator_init:  - segment: [0 -> 512]: [0x000000008021f000 -> 0x000000008023a000)
+[INFO  0,-1] bootcpu_init: start scheduler!
+[INFO  1,-1] secondarycpu_init: start scheduler!
+[INFO  2,-1] secondarycpu_init: start scheduler!
+[INFO  0,1] init: kthread: init starts!
+[INFO  3,-1] secondarycpu_init: start scheduler!
+[WARN  3,6] worker: thread 6: starting
+[WARN  1,4] worker: thread 4: starting
+[INFO  1,4] worker: thread 4: count 2000, sleeping
+[WARN  1,7] worker: thread 7: starting
+[WARN  1,8] worker: thread 8: starting
+[INFO  1,8] worker: thread 8: count 3000, sleeping
+[WARN  1,9] worker: thread 9: starting
+[INFO  1,9] worker: thread 9: count 4000, sleeping
+[WARN  1,10] worker: thread 10: starting
+[INFO  1,10] worker: thread 10: count 5000, sleeping
+[WARN  0,2] worker: thread 2: starting
+[WARN  0,12] worker: thread 12: starting
+[WARN  1,11] worker: thread 11: starting
+[WARN  1,14] worker: thread 14: starting
+[WARN  2,3] worker: thread 3: starting
+[WARN  1,15] worker: thread 15: starting
+[WARN  2,16] worker: thread 16: starting
+[ERROR 2,5] kernel_trap: =========== Kernel Panic ===========
+[INFO  1,7] worker: thread 7: count 6000, sleeping
+sstatus : 0x0000000200000120
+- SUM:0, SPP:S, SPIE:1, SIE: 0
+scause  : 0x0000000000000001
+- Interrupt:0, Code:1
+sepc    : 0x0000000000000000
+stval   : 0x0000000000000000
+sip     : 0x0000000000000000
+- Pending: Software:0, Timer:0, External:0
+sie     : 0x0000000000000220
+[INFO  3,6] worker: thread 6: count 1000, sleeping
+[PANIC 3,10] os/proc.c:65: first_sched_ret should never return. You should use exit to terminate kthread
+[WARN  0,13] worker: thread 13: starting
+[PANIC 0,13] os/trap.c:45: other CPU has panicked
+[PANIC 1,9] os/trap.c:45: other CPU has panicked
+- Enabled: Software:0, Timer:1, External:1
+satp    : 0x0000000000000000
+kernel trapframe at 0x000000008023ff50
+ra: 0x0000000000000000   sp: 0x000000008023ff50   gp: 0x0000000000000000  tp: 0x0000000000000002
+t0: 0x0000000000000100   t1: 0x0000000080201cf0   t2: 0x0000000000000000  s0: 0x0000000000000000
+s1: 0x0000000000000000   a0: 0x000000008021e2c0   a1: 0x0000000080239c28  a2: 0x0000000000000000
+a3: 0x000000008021e098   a4: 0x0000000000000000   a5: 0x0000000000000002  a6: 0x0000000080206250
+a7: 0x0000000000000001   s2: 0x0000000000000000   s3: 0x0000000000000000  s4: 0x0000000000000000
+s5: 0x0000000000000000   s6: 0x0000000000000000   s7: 0x0000000000000000  s8: 0x0000000000000000
+s9: 0x0000000080202c1c  s10: 0x0000000000000000  s11: 0x0000000000000000  t3: 0x0000000000002000
+t4: 0x0000000000000000   t5: 0x0000000000000000   t6: 0x0000000000000000  
+
+[PANIC 2,5] os/trap.c:90: kernel panic
