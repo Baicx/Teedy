@@ -21,7 +21,12 @@ pipeline {
                 sh 'mvn pmd:pmd'
             }
         }
-       
+        
+        stage('Site') {
+            steps {
+                sh 'mvn site'
+            }
+        }
         stage('Package') {
             steps {
                 sh 'mvn package -DskipTests'
@@ -30,6 +35,7 @@ pipeline {
     }
     post {
         always {
+            archiveArtifacts artifacts: '**/target/site/**/*.*', fingerprint: true
             archiveArtifacts artifacts: '**/target/**/*.jar', fingerprint: true
             archiveArtifacts artifacts: '**/target/**/*.war', fingerprint: true
             junit '**/target/surefire-reports/*.xml'
