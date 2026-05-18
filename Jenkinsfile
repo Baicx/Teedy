@@ -21,13 +21,7 @@ pipeline {
                 sh 'mvn pmd:pmd'
             }
         }
-        // JaCoCo 阶段已移除
-        stage('Javadoc') {
-            steps {
-                sh 'mvn javadoc:javadoc'
-            }
-        }
-        // Site 阶段已移除
+       
         stage('Package') {
             steps {
                 sh 'mvn package -DskipTests'
